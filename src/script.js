@@ -17,20 +17,21 @@ function endGame() {
     timeUp = true;
 }
 
-function popUp() {
-		let hole = randomHole(holes);
-		let time = randomTime(200, 1000);
+function popUp() {	
+	let hole = randomHole(holes);
+	let time = randomTime(200, 1000);
 
-    hole.classList.add('up');
+	hole.classList.add('up');
+	hole.classList.remove('smashed');
 		
-		setTimeout(function() {
-				hole.classList.remove('up'); 
-		
-				if (timeUp == false) {
-						popUp();
-				}
+	setTimeout(function() {
+		hole.classList.remove('up'); 
+	
+		if (timeUp == false) {
+			popUp();
+		}
 
-		}, time)
+	}, time)
 }
 
 function randomHole(holes) {
@@ -41,11 +42,19 @@ function randomHole(holes) {
 }
 
 function smash(cupcake) {
-    console.log('smashed!');
+	let hole = cupcake.parentNode;
 
-		cupcake.parentNode.classList.remove('up');
+	if (!hole.classList.contains("smashed")) {
+		console.log('smashed!');
 		score = score + 1;
 		scoreBoard.textContent = score;
+	}
+	else {
+		console.log('clicked on cupcake thats not up')
+	}
+
+	hole.classList.add('smashed');
+	hole.classList.remove('up');
 }
 
 function randomTime(min, max) {
@@ -53,5 +62,3 @@ function randomTime(min, max) {
 
     return time;
 }
-
-

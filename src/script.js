@@ -20,9 +20,10 @@ function endGame() {
 function popUp() {	
 	let hole = randomHole(holes);
 	let time = randomTime(200, 1000);
+	let cupcake = hole.querySelector(".cupcake");
 
 	hole.classList.add('up');
-	hole.classList.remove('smashed');
+	cupcake.classList.remove('smashed');
 		
 	setTimeout(function() {
 		hole.classList.remove('up'); 
@@ -44,16 +45,21 @@ function randomHole(holes) {
 function smash(cupcake) {
 	let hole = cupcake.parentNode;
 
-	if (!hole.classList.contains("smashed")) {
+	if (!cupcake.classList.contains("smashed")) {
 		console.log('smashed!');
 		score = score + 1;
 		scoreBoard.textContent = score;
+
+		setTimeout(function() {
+			cupcake.classList.remove("smashed");
+		}, 500)
+
 	}
 	else {
 		console.log('clicked on cupcake thats not up')
 	}
 
-	hole.classList.add('smashed');
+	cupcake.classList.add('smashed');
 	hole.classList.remove('up');
 }
 

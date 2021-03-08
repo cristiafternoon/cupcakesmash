@@ -94,6 +94,21 @@ button {
   top: 0;
 }
 
+.cupcake.smashed {
+  top: 0;
+  border: none;
+  background-image: url("smash.png")!important;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: bottom center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 1s;
+  left: 0;
+}
+
 .copyright {
 	color: #fff;
 	margin-top: 30px;

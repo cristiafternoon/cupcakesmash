@@ -7,7 +7,7 @@ body {
   padding: 0;
   margin: 0;
   background: #8246af;
-  font-family: Raleway, sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-align: center;
 }
 
@@ -68,16 +68,21 @@ button {
   z-index: -1;
   bottom: 0px;
 }
-.hole:nth-child(3n) .cupcake {
+.hole:nth-child(3n) .cupcake.up {
   background-image: url("shecodes_cupcake.png");
 }
-.hole:nth-child(3n-1) .cupcake {
+.hole:nth-child(3n-1) .cupcake.up {
+  background-image: url("rev_cupcake_rwg.png");
+}
+.hole:nth-child(3n) .cupcake.down {
+  background-image: url("shecodes_cupcake.png");
+}
+.hole:nth-child(3n-1) .cupcake.down {
   background-image: url("rev_cupcake_rwg.png");
 }
 
 .cupcake {
   border: none;
-  background-image: url("plain_cupcake.png");
   background-color: transparent;
   background-position: bottom center;
   background-repeat: no-repeat;
@@ -86,27 +91,33 @@ button {
   top: 100%;
   width: 100%;
   height: 100%;
-  transition: all 1s;
+}
+
+.cupcake.down {
+  background-image: url("plain_cupcake.png");
   left: 0;
+  transition: all 1s;
 }
 
-.hole.up .cupcake {
+.cupcake.up {
+  background-image: url("plain_cupcake.png");
+  left: 0;
   top: 0;
+  transition: all 1s;
 }
 
-.cupcake.smashed {
-  top: 0;
-  border: none;
+@keyframes smash {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+.cupcake.smash {
   background-image: url("smash.png")!important;
-  background-size: 60%;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-position: bottom center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transition: all 1s;
   left: 0;
+  top: 0;
+  animation-name: smash;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
 }
 
 .copyright {
